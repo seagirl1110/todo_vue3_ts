@@ -1,6 +1,7 @@
 <template>
     <ul class="todo-list">
-        <AppTodoItem v-for="todo in todos" :key="todo.id" :todo="todo" @toggle-todo="toggleTodo" />
+        <AppTodoItem v-for="todo in todos" :key="todo.id" :todo="todo" @toggle-todo="toggleTodo"
+            @remove-todo="removeTodo" />
     </ul>
 </template>
 
@@ -32,6 +33,9 @@ export default defineComponent({
             if (targetTodo) {
                 targetTodo.completed = !targetTodo.completed
             }
+        },
+        removeTodo(id: number) {
+            this.todos = this.todos.filter(todo => todo.id !== id)
         }
     }
 })
