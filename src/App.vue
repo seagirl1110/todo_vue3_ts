@@ -4,9 +4,9 @@
   <AppFilters />
 
   <main class="app-main">
-    <AppTodoList :todos="todos" @toggle-todo="toggleTodo" @remove-todo="removeTodo"/>
+    <AppTodoList :todos="todos" @toggle-todo="toggleTodo" @remove-todo="removeTodo" />
 
-    <AppAddTodo />
+    <AppAddTodo @add-todo="addTodo" />
   </main>
 
   <AppFooter />
@@ -51,6 +51,9 @@ export default defineComponent({
     },
     removeTodo(id: number) {
       this.todos = this.todos.filter(todo => todo.id !== id)
+    },
+    addTodo(todo: Todo) {
+      this.todos.push(todo)
     }
   }
 })
