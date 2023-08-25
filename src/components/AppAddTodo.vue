@@ -5,7 +5,7 @@
                 <i class="bi bi-x"></i>
             </button>
             <div class="text-input text-input--focus">
-                <input class="input" />
+                <input class="input" v-model="todoText"/>
             </div>
             <button class="button button--filled">Add task</button>
         </form>
@@ -19,13 +19,15 @@
 import { defineComponent } from "vue";
 
 interface State {
-    isFormVisible: boolean
+    isFormVisible: boolean,
+    todoText: string
 }
 
 export default defineComponent({
     data(): State {
         return {
-            isFormVisible: false
+            isFormVisible: false,
+            todoText: ''
         }
     },
     methods: {
